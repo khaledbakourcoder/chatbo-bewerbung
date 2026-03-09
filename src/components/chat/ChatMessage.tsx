@@ -25,7 +25,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
     return (
         <motion.div
             {...scaleIn}
-            transition={{ ...scaleIn.transition, duration: 0.5 } as any}
+            transition={{ ...scaleIn.transition, duration: 0.5 }}
             className={`flex items-start gap-3 md:gap-4 mb-6 w-full group ${isBot ? "flex-row" : "flex-row-reverse"}`}
         >
             <Avatar type={isBot ? "bot" : "user"} />
@@ -50,7 +50,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
                         opacity: 0,
                     }}
                 >
-                    {isBot ? "SYSTEM" : "USER"} // {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    {isBot ? "SYSTEM" : "USER"} {"//"} {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </span>
             </div>
         </motion.div>

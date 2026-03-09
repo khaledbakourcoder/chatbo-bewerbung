@@ -7,7 +7,7 @@ import { fadeInUp } from "@/lib/motion";
 
 export const ProjectCards = () => {
     return (
-        <div className="flex flex-col gap-3 " style={{marginTop:"10px"}}>
+        <div className="flex flex-col gap-3 " style={{ marginTop: "10px" }}>
             {projects.map((project, index) => (
                 <motion.div
                     key={project.title}
@@ -15,12 +15,12 @@ export const ProjectCards = () => {
                     transition={{
                         ...fadeInUp.transition,
                         delay: index * 0.08,
-                    } as any}
+                    }}
                     whileHover={{ y: -2 }}
                     className="relative px-6 py-5 bg-petrol-bg border border-petrol-border rounded-[14px] overflow-hidden cursor-default transition-all duration-300 hover:shadow-lg hover:border-petrol-border-hover"
                     style={{
                         // Specific shadow value not in variables
-                        padding:"20px",
+                        padding: "20px",
                         boxShadow: "none",
                     }}
                     onMouseEnter={e => {
@@ -66,7 +66,7 @@ export const ProjectCards = () => {
                     {/* Tech Tags */}
                     <div className="flex flex-wrap gap-1 mb-3.5">
                         {project.tech.split(" ").map((t) => (
-                            <span key={t}  style={{padding:"2px"}} className="text-[10px] font-mono bg-petrol-light/5 border border-petrol-light/15 text-petrol-mid rounded-md">
+                            <span key={t} style={{ padding: "2px" }} className="text-[10px] font-mono bg-petrol-light/5 border border-petrol-light/15 text-petrol-mid rounded-md">
                                 {t}
                             </span>
                         ))}

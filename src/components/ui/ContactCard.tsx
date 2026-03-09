@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Globe, ArrowUpRight } from "lucide-react";
+import { Mail, ArrowUpRight } from "lucide-react";
 import { fadeInUp } from "@/lib/motion";
 
 export const ContactCard = () => {
@@ -16,7 +16,7 @@ export const ContactCard = () => {
     ];
 
     return (
-        <div  style={{marginTop:"2px"}} className="flex flex-col gap-2 ">
+        <div style={{ marginTop: "2px" }} className="flex flex-col gap-2 ">
             {contacts.map((contact, index) => (
                 <motion.a
                     key={contact.label}
@@ -24,13 +24,10 @@ export const ContactCard = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     {...fadeInUp}
-                    transition={{
-                        ...fadeInUp.transition,
-                        delay: index * 0.08,
-                    } as any}
+                    transition={{ duration: 1.2, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                     whileHover={{ x: 3 }}
                     style={{
-                        padding:"10px"
+                        padding: "10px"
                     }}
                     className="flex items-center gap-3.5 p-3.5 bg-petrol-dark text-white border border-petrol-border rounded-xl transition-all duration-300 relative overflow-hidden hover:border-petrol-border-hover hover:shadow-lg hover:bg-petrol-hover"
                     onMouseEnter={e => {

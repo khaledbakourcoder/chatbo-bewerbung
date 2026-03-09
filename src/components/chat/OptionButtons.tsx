@@ -30,14 +30,14 @@ export const OptionButtons = ({ options, onSelect, disabled }: OptionButtonsProp
                     transition={{
                         ...scaleIn.transition,
                         delay: index * 0.05,
-                    } as any}
+                    }}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                     whileHover={!disabled ? {
                         scale: 1.02,
                         backgroundColor: "var(--color-petrol-border)",
                         borderColor: "var(--color-petrol-border-hover)",
-                       
+
                     } : {}}
                     whileTap={!disabled ? { scale: 0.98 } : {}}
                     onClick={() => onSelect(option)}

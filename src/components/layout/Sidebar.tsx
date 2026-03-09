@@ -9,6 +9,7 @@ import { fadeInUp } from "@/lib/motion";
 
 export const Sidebar = () => {
     const [mounted, setMounted] = useState(false);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     useEffect(() => setMounted(true), []);
     const { isDesktop } = useWindowSize();
 
@@ -29,7 +30,7 @@ export const Sidebar = () => {
             <div style={{ padding: innerTopPadding }}>
                 <motion.div
                     {...fadeInUp}
-                    transition={{ ...fadeInUp.transition, duration: 0.8 } as any}
+                    transition={{ ...fadeInUp.transition, duration: 0.8 }}
                 >
                     <h1
                         className="text-5xl lg:text-6xl"

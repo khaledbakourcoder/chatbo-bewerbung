@@ -10,20 +10,20 @@ export const useChat = () => {
     const initialized = useRef(false);
     const typingTimer = useRef<NodeJS.Timeout>(undefined);
 
-   const addMessage = useCallback((text: string, sender: 'bot' | 'user', component?: Node['component']) => {
-    console.log("add MEssage")
-    setMessages((prev) => {
-        console.log(prev,"prev")
-        return [...prev, {
-            id: `${Date.now()}`,
-            text,
-            sender,
-            timestamp: Date.now(),
-            component,
-        }];
-    });
-}, []);
- 
+    const addMessage = useCallback((text: string, sender: 'bot' | 'user', component?: Node['component']) => {
+        console.log("add MEssage")
+        setMessages((prev) => {
+            console.log(prev, "prev")
+            return [...prev, {
+                id: `${Date.now()}`,
+                text,
+                sender,
+                timestamp: Date.now(),
+                component,
+            }];
+        });
+    }, []);
+
     const selectOption = useCallback((option: Option) => {
         addMessage(option.label, 'user');
         setIsTyping(true);
@@ -44,19 +44,20 @@ export const useChat = () => {
         if (initialized.current) return;
         initialized.current = true;
 
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsTyping(true);
         console.log("🟡 init start");
         typingTimer.current = setTimeout(() => {
- 
+
             const startNode = tree["START"];
-        
+
             if (startNode) {
                 addMessage(startNode.message, 'bot', startNode.component);
             }
             setIsTyping(false);
         }, 600);
- 
-    }, []);
+
+    }, [addMessage]);
 
 
 

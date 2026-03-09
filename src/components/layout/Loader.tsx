@@ -1,51 +1,51 @@
 "use client";
 
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect } from "react";
-import { fadeInUp, fadeIn, scaleIn } from "@/lib/motion";
+import { fadeInUp } from "@/lib/motion";
 
 interface LoaderProps {
     onComplete: () => void;
 }
 
-const textArr=["Khaled",".","Bewerbung"]
-const circles=[{opacity:0.15,scale:2.5,delay:0.2},{opacity:0.1,scale:2,delay:0.5}]
+const textArr = ["Khaled", ".", "Bewerbung"]
+const circles = [{ opacity: 0.15, scale: 2.5, delay: 0.2 }, { opacity: 0.1, scale: 2, delay: 0.5 }]
 
 export const Loader = ({ onComplete }: LoaderProps) => {
-   
+
     useEffect(() => {
-      
-      const timer = setTimeout(() => {
+
+        const timer = setTimeout(() => {
             onComplete();
         }, 2000);
 
         return () => clearTimeout(timer);
-    }, []);
-    
+    }, [onComplete]);
+
 
     return (
         <motion.div
             className="fixed inset-0 z-[100] flex items-center justify-center bg-white"
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
         >
-        { circles.map(({opacity,scale,delay},index)=>
-                 <motion.div
-                 key={index}
-                initial={{ scale: 0, opacity: opacity }}
-                animate={{ scale: scale, opacity: 0 }}
-                transition={{ duration: 1.8, delay: delay, ease: "easeOut" }}
-                className="absolute w-[300px] h-[300px] rounded-full border border-petrol-mid"
-            />
-    
-    )}
-  
-         
+            {circles.map(({ opacity, scale, delay }, index) =>
+                <motion.div
+                    key={index}
+                    initial={{ scale: 0, opacity: opacity }}
+                    animate={{ scale: scale, opacity: 0 }}
+                    transition={{ duration: 1.8, delay: delay, ease: "easeOut" }}
+                    className="absolute w-[300px] h-[300px] rounded-full border border-petrol-mid"
+                />
+
+            )}
+
+
 
             <div className="flex flex-col items-center gap-10">
                 {/* Buchstaben einzeln animiert */}
                 <div className="flex items-center gap-3">
-                 {textArr.map((text,index)=>
-                    <div key={index} className="flex text-[35px] md:text-[42px]">
+                    {textArr.map((text, index) =>
+                        <div key={index} className="flex text-[35px] md:text-[42px]">
                             {text.split("").map((char, i) => (
                                 <motion.span
                                     key={i}
@@ -53,7 +53,7 @@ export const Loader = ({ onComplete }: LoaderProps) => {
                                     transition={{
                                         ...fadeInUp.transition,
                                         delay: i * 0.06,
-                                    } as any}
+                                    }}
                                     style={{
                                         fontWeight: 800,
                                         letterSpacing: "-1px",
@@ -68,9 +68,9 @@ export const Loader = ({ onComplete }: LoaderProps) => {
                                 </motion.span>
                             ))}
                         </div>
-                )}
+                    )}
 
-                    
+
                 </div>
 
                 {/* Scan Line mit Glow */}

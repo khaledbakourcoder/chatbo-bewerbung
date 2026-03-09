@@ -38,7 +38,7 @@ export const SkillChart = () => {
                         <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${skill.percentage}%` }}
-                            transition={{ duration: 1.2, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] as any }}
+                            transition={{ duration: 1.2, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                             style={{
                                 height: "100%",
                                 background: "linear-gradient(90deg, var(--color-petrol-light), var(--color-petrol-mid))",
