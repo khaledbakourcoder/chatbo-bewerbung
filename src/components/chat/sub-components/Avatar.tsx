@@ -17,7 +17,7 @@ export const Avatar = ({ type }: AvatarProps) => {
         >
             {hasError ? (
                 <span className="text-petrol-mid font-bold text-xs">
-                    {isBot ? "AI" : "K"}
+                    {isBot ? "bot" : "epic ai"}
                 </span>
             ) : isBot ? (
                 <Image
